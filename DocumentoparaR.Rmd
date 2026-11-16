@@ -6,26 +6,43 @@ output: html_document
 ---
 **Lectura de datos**
 ```{r}
-
+if(!require("readxl")){
+install.packages("readxl")
+library("readxl")
+} else {
+library("readxl")
+}
+datos <- read_excel("Movilidad.xlsx")
+head(datos)
 
 ```
 
 **Cargar Paquetes**
 ```{r}
 
-
+if(!require("BSDA")){
+install.packages("BSDA")
+library("BSDA")
+} else {
+library("BSDA")
+}
 ```
 
 **Pregunta 1**
 ```{r}
+x <- datos$Tiempo[datos$Residencia == "Rural"]
+mean(x)
 
-
+length(x)
+z.test(x, sigma.x = sd(x),conf.level = 0.96)$conf.int
 ```
 
 
 **Pregunta 2**
 ```{r}
-
+y <- length(which(datos$Transporte == "Motocicleta"))
+n <- nrow(datos)
+prop.test(y, n, conf.level = 0.95)$conf.int
 
 ```
 
@@ -33,7 +50,9 @@ output: html_document
 **Pregunta 3**
 ```{r}
 
+morning <- length(which(datos$Periodo == "Manana"))
 
+prop.test(morning, n, p = 0.6, alternative = "greater", conf.level = 0.93)
 ```
 
 **Pregunta 4**
