@@ -1,0 +1,68 @@
+---
+title: "Laboratorio 2 II Parcial codigo"
+author: "Estudiante"
+date: "2026-06-15"
+output: html_document
+---
+**Lectura de datos**
+```{r}
+if(!require("readxl")){
+install.packages("readxl")
+library("readxl")
+} else {
+library("readxl")
+}
+datos <- read_excel("BaseVersion1.xlsx")
+head(datos)
+```
+
+**Cargar Paquetes**
+```{r}
+if(!require("BSDA")){
+install.packages("BSDA")
+library("BSDA")
+} else {
+library("BSDA")
+}
+
+```
+
+**Pregunta 1**
+```{r}
+mean(datos$HorasRedes)
+
+```
+
+
+**Pregunta 2**
+```{r}
+
+ep <- (0.6396852+0.4147324)/2
+ep
+
+err <- (0.6396852-0.4147324)/2
+err
+```
+
+
+**Pregunta 3**
+```{r}
+x <- length(which(datos$Opinión == 1))
+n <- nrow(datos)
+prop.test(x, n, conf.level = 0.97)$conf.int
+
+```
+
+**Pregunta 4**
+```{r}
+
+x <- length(which(datos$Opinión == 0))
+n <- nrow(datos)
+prop.test(x, n, p=0.55, alternative = "two.sided", conf.level = 0.98)
+```
+
+**Pregunta 5**
+```{r}
+fasdjlfkjsakldjf
+
+```
